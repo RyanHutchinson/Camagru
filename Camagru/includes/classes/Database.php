@@ -16,14 +16,6 @@ class Database{
             $data = $statement->fetchALL();
             return($data);
         }
-
     }
-
-
-
-
 }
-
-//-------------------------Learn everything above this line---------------------
-
 ?>

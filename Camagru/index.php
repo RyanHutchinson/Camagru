@@ -10,6 +10,10 @@ function __autoload($class) {
 	}
 };
 
+ if(!in_array($_GET['url'], Route::$valid_routes)){
+	 header("location: http://localhost:8080/camagru/Camagru/404");
+ }
+
 //print_r(Route::$valid_routes);//-------------------Prints out the current routes stored.
 
 ?>

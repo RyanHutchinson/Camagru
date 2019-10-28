@@ -1,9 +1,7 @@
 <?php
 class AboutUs extends Controller{
     
-    public static function test(){
-        print_r (self::query("SELECT * FROM users")); //------------------------okok I am getting it
-    }
+
 
 }
 ?>
