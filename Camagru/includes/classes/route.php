@@ -12,5 +12,13 @@ class Route{
         }
     }
 
+    public static function setDestination($dest){
+        $tmp = explode('/', $_SERVER['REQUEST_URI']);
+        $tmp[count($tmp) - 1] = $dest;
+        $tmp = implode('/', $tmp);
+        
+        header("location:" . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $tmp);
+    }
+
 }
 ?>

@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  /* Logo container */
+  .top-container {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+  }
+  /* Sticky menu bar */
+  .header {
+    padding: 20px;
+    background:lightblue;
+    color: #f1f1f1;
+    align-content: center;
+  }
+  
+  .header a {
+    /* float: left; */
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .sticky + .content {
+    padding-top: 75px;
+  }
+
+  /* Body of content */
+  .content {
+    padding: 16px;
+  }
+/* Footer */
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightblue;
+    color: white;
+    text-align: center;
+ }
+
+ /* 404 stuff */
+
+  

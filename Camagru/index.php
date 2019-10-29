@@ -1,6 +1,6 @@
 <?php
 
-require_once('./includes/routes.php');
+require_once('./includes/routes/routes.php');
 
 function __autoload($class) {
 	if(file_exists('./includes/classes/' . $class . '.php')){
@@ -11,9 +11,23 @@ function __autoload($class) {
 };
 
  if(!in_array($_GET['url'], Route::$valid_routes)){
-	 header("location: http://localhost:8080/camagru/Camagru/404");
- }
+    Route::setDestination('404');
+     }
 
-//print_r(Route::$valid_routes);//-------------------Prints out the current routes stored.
+
+
+
+
+
+
+
+
+
+/**********************************DEBUGGING**************************************/
+// print_r(Route::$valid_routes);//-------------------Prints out the current routes stored.
+// echo $_GET['url'];
+// echo "<pre>";
+// print_r ($_SERVER);
+// echo "</pre>";
 
 ?>
