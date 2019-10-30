@@ -2,6 +2,5 @@
 class AboutUs extends Controller{
     
 
-
 }
 ?>

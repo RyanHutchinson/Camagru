@@ -2,7 +2,9 @@
 class Controller extends Database{
 
     public static function CreateView($viewname){
+        require_once('./includes/views/layout/header.php');
         require_once("./includes/views/$viewname.php");
+        require_once('./includes/views/layout/footer.php');
         //self::test();
     }
 
@@ -12,6 +14,16 @@ class Controller extends Database{
         echo"<pre>";
         print_r($thing);//------- this is for checking raw retrieved data.
         echo"</pre>";
+    }
+
+    public static function bodyTest($line){
+
+        $i = 0;
+        
+        while($i < 50){
+            echo'<p>'.$line.'</p>';
+            $i++;
+        }
     }
 
 
