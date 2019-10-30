@@ -4,7 +4,7 @@ body {
   }
   /* Logo container */
   .top-container {
-    background-color: #f1f1f1;
+    background-color: white;
     padding: 30px;
     text-align: center;
   }
@@ -22,7 +22,6 @@ body {
     width: 49%;
     height: 30px;
     padding: 5px;
-    /* background-color: brown; */
   }
   .menuButtons a{
     float: left;
@@ -34,7 +33,6 @@ body {
     width: 50%;
     height: 30px;
     padding: 5px;
-    /* background-color: chartreuse; */
   }
 
   .loginContainer a{
@@ -43,12 +41,7 @@ body {
   }
   
   .header a {
-    /* float: left; */
-    /* font-size: 16px; */
     color: white;
-    /* text-align: center; */
-    /* padding: 14px 16px; */
-    /* text-decoration: none; */
   }
   .sticky {
     position: fixed;
@@ -78,4 +71,32 @@ body {
 
  /* 404 stuff */
 
+
+ /* Login */
+
+ .loginWrapper{
+    max-width: 250px; 
+    margin: auto;
+    text-align: center;
+    background-color: lightblue;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 9px -2px rgba(0,0,0,0.2);
+    color: white;
+ }
+
+ .loginForm div{
+    margin: 3px;
+    color: lightslategray;
+ }
+
+ .loginForm button{
+    margin-top: 25px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+    color: lightslategrey;
+ }
   

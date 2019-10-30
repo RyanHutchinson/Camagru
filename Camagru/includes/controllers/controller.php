@@ -5,15 +5,6 @@ class Controller extends Database{
         require_once('./includes/views/layout/header.php');
         require_once("./includes/views/$viewname.php");
         require_once('./includes/views/layout/footer.php');
-        //self::test();
-    }
-
-    public static function test(/* put in an argument $arg or summin */){
-   //     $thing = self::query('SELECT * FROM users WHERE Membertype=?;', array(2));
-   //     $thing = self::query("SELECT * FROM users"/*here would be $arg as per above */);
-        echo"<pre>";
-        print_r($thing);//------- this is for checking raw retrieved data.
-        echo"</pre>";
     }
 
     public static function bodyTest($line){
@@ -26,6 +17,20 @@ class Controller extends Database{
         }
     }
 
+    // FIXME:--------------Login Container Stuff--------------------------------
+    public static function loginContainer($user){
+        
+        if($user == ''){
+            echo'<a href="' . LOGIN_PATH . '">Login</a>';
+        }else{
+            echo'
+            <a href="' . LOGOUT_PATH . '">Logout</a>
+            <a href="' . PROFILE_PATH . '">' . $user . '</a>
+                 ';
+        }
+
+    }
+    
 
 }
 ?>

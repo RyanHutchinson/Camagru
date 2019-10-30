@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once('./includes/routes/routes.php');
 
 function __autoload($class) {

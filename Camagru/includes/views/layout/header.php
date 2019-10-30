@@ -21,7 +21,7 @@
 					<a href="<?=CONTACT_PATH?>">Contact-us</a>
 				</div>
 				<div class="loginContainer">
-					<a href="<?=REGISTER_PATH?>">Register</a>
-					<a href="<?=LOGIN_PATH?>">Login</a>
+                    <!-- <a href="<?=REGISTER_PATH?>">Register</a> -->
+                    <?php self::loginContainer($_SESSION['user']);?>
 				</div>
 		</div>
