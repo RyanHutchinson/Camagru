@@ -1,12 +1,12 @@
 <?php
-// FIXME: make a function do do the pathing as per the index's setdestination function.
+
 define('CSS_PATH', Route::getDestination('css/style.css'));
-define('HOME_PATH', 'http://localhost:8080/camagru/Camagru/');
-define('ABOUT_PATH', 'http://localhost:8080/camagru/Camagru/About-us');
-define('CONTACT_PATH', 'http://localhost:8080/camagru/Camagru/Contact-us');
-define('LOGIN_PATH', 'http://localhost:8080/camagru/Camagru/Login');
-define('LOGOUT_PATH', 'http://localhost:8080/camagru/Camagru/Logout');
-define('REGISTER_PATH', 'http://localhost:8080/camagru/Camagru/Register');
+define('HOME_PATH', Route::getDestination(''));
+define('ABOUT_PATH', Route::getDestination('About-us'));
+define('CONTACT_PATH', Route::getDestination('Contact-us'));
+define('LOGIN_PATH', Route::getDestination('Login'));
+define('LOGOUT_PATH', Route::getDestination('Logout'));
+define('REGISTER_PATH', Route::getDestination('Register'));
 define('BOOTSTRAP_PATH', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css');
 
 Route::set('', function(){

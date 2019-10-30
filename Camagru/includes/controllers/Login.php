@@ -1,10 +1,11 @@
 <?php
 class Login extends Controller{
 
+    //TODO: Fix the css in the below forms. Get it into the .css file
     private function cama_login($username, $password) {
         if (empty($username) || empty($password)) {//error no input
             return ('
-            <div style="padding-top:10px; color: red">
+            <div style="padding-top:10px; color: red"> 
             <p>Please enter a Username & Password!</p>
             </div>
             ');
@@ -29,7 +30,7 @@ class Login extends Controller{
     public static function loginForm(){
         if (isset($_SESSION['user']) && !empty($_SESSION['user'])){
             echo '<p>You are logged in!</p>';
-            header("refresh:3;url=" . Route::getDestination());//FIXME pathing
+            header("refresh:3;url=" . Route::getDestination());
         }else{
             echo '
             <form method="POST" class="loginForm">
