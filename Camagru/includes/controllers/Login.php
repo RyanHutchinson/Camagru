@@ -29,7 +29,7 @@ class Login extends Controller{
     public static function loginForm(){
         if (isset($_SESSION['user']) && !empty($_SESSION['user'])){
             echo '<p>You are logged in!</p>';
-            header("refresh:3;url=http://localhost:8080/camagru/Camagru/");//FIXME pathing
+            header("refresh:3;url=" . Route::getDestination());//FIXME pathing
         }else{
             echo '
             <form method="POST" class="loginForm">
@@ -46,7 +46,7 @@ class Login extends Controller{
                     <span>Not registered?</span>
                 </div>
                 <div>
-                    <a href="http://localhost:8080/camagru/Camagru/Register">Register here</a>  
+                    <a href="' . Route::getDestination("Register", true) . '">Register here</a>  
                 </div>
             </div>
             ';
