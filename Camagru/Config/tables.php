@@ -13,7 +13,7 @@ $create_user_table = "CREATE TABLE IF NOT EXISTS camagru.users (
     Membertype int,
     PRIMARY KEY (ID)
     );";
-
+    
 $create_post_table = "CREATE TABLE IF NOT EXISTS camagru.posts (
     ID int NOT NULL,
     Userid int NOT NULL,
