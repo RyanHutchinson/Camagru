@@ -19,18 +19,12 @@ class Register extends Controller{
 
     // FIXME: implement $hashp = hash('whirlpool', $password);
     $user_data = self::query('SELECT * FROM users WHERE Username=? OR Email=?;', array($username, $email));
-
-    // echo (var_dump($user_data['FirstName']));
-
-    // echo"<script> alert('" . json_encode("[" . $user_data[1] . "] [" . $email . "]") . " :: " . json_encode($user_data) . "')</script>";// FIXME: Remove me
-    //echo"<script> console.log('" . json_encode("[" . $user_data[4] . "] [" . $email . "]") . " :: " . json_encode($user_data) . "')</script>";// FIXME: Remove me
-
-    // $usernamet = $user_data['Username'];
-    //echo'<script>alert('.json_encode($user_data).')</script>';
+    $user_data = $user_data[0];
+    
     if (!strcmp($user_data['Email'], $email)){//Checking email conflict
         return ('
         <div style="padding-top:10px; color: red">
-        <p>* email address already in use! *</p>
+        <p>email address already in use!</p>
         </div>
         ');
     }else if(!strcmp($user_data['Username'], $username)){//checking user conflict

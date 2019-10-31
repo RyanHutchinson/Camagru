@@ -60,7 +60,7 @@ class Login extends Controller{
                 }
             }
             if ($_SESSION['user'] == 'admin')
-                header("Location: HOME_PATH");
+                header("Location: HOME_PATH");//TODO:Admin page
         }
     }
 }      

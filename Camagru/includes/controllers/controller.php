@@ -6,7 +6,7 @@ class Controller extends Database{
         require_once("./includes/views/$viewname.php");
         require_once('./includes/views/layout/footer.php');
     }
-
+    
     public static function bodyTest($line){
 
         $i = 0;
@@ -26,7 +26,7 @@ class Controller extends Database{
             echo'
             <a href="' . LOGOUT_PATH . '">Logout</a>
             <a href="' . PROFILE_PATH . '">' . $user . '</a>
-                 ';
+            ';
         }
 
     }

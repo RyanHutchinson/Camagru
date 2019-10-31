@@ -18,8 +18,8 @@ class Database{
         $statement->execute($params);
 
         if (explode(' ', $query)[0] == 'SELECT'){
-            $data = $statement->fetchALL();
-            return($data);
+            return ($statement->fetchALL());
+            //return($data);
         }
     }
 }
