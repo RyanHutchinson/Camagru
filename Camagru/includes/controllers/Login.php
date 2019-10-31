@@ -2,8 +2,8 @@
 class Login extends Controller{
 
     //TODO: Fix the css in the below forms. Get it into the .css file
-    private function cama_login($username, $password) {
-        if (empty($username) || empty($password)) {//error no input
+    private function camaLogin($username, $password) {//error no input
+        if (empty($username) || empty($password)) {
             return ('
             <div style="padding-top:10px; color: red"> 
             <p>Please enter a Username & Password!</p>
@@ -14,14 +14,14 @@ class Login extends Controller{
         // FIXME: implement $hashp = hash('whirlpool', $password);
         $user_data = self::query('SELECT * FROM users WHERE Username=? AND HashedPassword=? AND  Membertype=?;', array($username, $password, 1));
 
-        echo"<script> console.log('" . json_encode($user_data) . "')</script>";// FIXME: Remove me
+        //echo"<script> console.log('" . json_encode($user_data) . "')</script>";// FIXME: Remove me
 
-        if ($user_data){
+        if ($user_data){//Setting session
             $_SESSION['user'] = $username;
-        }else{
+        }else{//Error incorrect input
             return ('
             <div style="padding-top:10px; color: red">
-            <p>Invalid Username & Password!</p>
+            <p>Invalid login credentials!</p>
             </div>
             ');
         }
@@ -46,13 +46,13 @@ class Login extends Controller{
                 <div>
                     <span>Not registered?</span>
                 </div>
-                <div>
-                    <a href="' . Route::getDestination("Register", true) . '">Register here</a>  
+                <div class="registerRedirect">
+                    <a href="' . Route::getDestination("Register", true) . '">Sign Up</a>  
                 </div>
             </div>
             ';
             if ($_POST['login'] == 'OK') {
-                $error =  self::cama_login($_POST['user'], $_POST['passwd']);
+                $error =  self::camaLogin($_POST['user'], $_POST['passwd']);
                 if (!$error){
                     header("Refresh:0");//120");
                 }else{

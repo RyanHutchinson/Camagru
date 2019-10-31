@@ -3,14 +3,12 @@ $create_database = "CREATE DATABASE IF NOT EXISTS camagru;";
 
 $create_user_table = "CREATE TABLE IF NOT EXISTS camagru.users (
     ID int NOT NULL AUTO_INCREMENT,
-    LastName varchar(255),
-    FirstName varchar(255),
     Username varchar(255) UNIQUE,
-    HashedPassword varchar(255),
+    FirstName varchar(255),
+    LastName varchar(255),
     Email varchar(255) UNIQUE ,
-    Age int,
-    CellPhoneNumber int(10),
-    Membertype int,
+    HashedPassword varchar(255),
+    Membertype int DEFAULT 2,
     PRIMARY KEY (ID)
     );";
     
@@ -30,9 +28,9 @@ $create_comment_table = "CREATE TABLE IF NOT EXISTS camagru.comments (
     PRIMARY KEY (ID)
     );";
 
-$add_test_users = "INSERT INTO camagru.users (`ID`, `LastName`, `FirstName`, `Username`, `HashedPassword`, `Email`, `Age`, `Membertype`) VALUES
-					('1', 'Admin', 'Admin', 'Admin', 'password', ' ', '0', '2'),
-					('2', 'Test1', 'Lastname', 'TEST1', 'password', 'test1@test.com', '42', '1')
+$add_test_users = "INSERT INTO camagru.users (`ID`, `Username`, `FirstName`, `LastName`, `Email`, `HashedPassword`, `Membertype`) VALUES
+					('1', 'Admin', 'Admin', 'Admin', 'admin@camagru.com', 'password', '42'),
+					('2', 'user1', 'Firstname', 'Lastname', 'email@email.com', 'password', '1')
 					;";
 
 $add_test_posts = "INSERT INTO camagru.posts (`ID`, `Userid`, `Imagesrc`, `Likes`) VALUES 

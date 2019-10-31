@@ -7,6 +7,7 @@ define('CONTACT_PATH', Route::getDestination('Contact-us'));
 define('LOGIN_PATH', Route::getDestination('Login'));
 define('LOGOUT_PATH', Route::getDestination('Logout'));
 define('REGISTER_PATH', Route::getDestination('Register'));
+define('PROFILE_PATH', Route::getDestination('Profile'));
 define('BOOTSTRAP_PATH', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css');
 
 Route::set('', function(){
@@ -38,4 +39,7 @@ Route::set('Register', function(){
     Register::CreateView('Register');
 });
 
+Route::set('Profile', function(){
+    Profile::CreateView('Profile');
+});
 ?>
