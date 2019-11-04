@@ -9,6 +9,7 @@ $create_user_table = "CREATE TABLE IF NOT EXISTS camagru.users (
     Email varchar(255) UNIQUE ,
     HashedPassword varchar(255),
     Membertype int DEFAULT 2,
+    Token varchar(255) ,
     PRIMARY KEY (ID)
     );";
     
@@ -30,7 +31,8 @@ $create_comment_table = "CREATE TABLE IF NOT EXISTS camagru.comments (
 
 $add_test_users = "INSERT INTO camagru.users (`ID`, `Username`, `FirstName`, `LastName`, `Email`, `HashedPassword`, `Membertype`) VALUES
 					('1', 'Admin', 'Admin', 'Admin', 'admin@camagru.com', 'password', '42'),
-					('2', 'user1', 'Firstname', 'Lastname', 'email@email.com', 'password', '1')
+					('2', 'notverified', 'Firstname', 'Lastname', 'email@email.com', 'password', '1'),
+                    ('3', 'verified', 'Firstname', 'Lastname', 'email1@email.com', 'password', '2')
 					;";
 
 $add_test_posts = "INSERT INTO camagru.posts (`ID`, `Userid`, `Imagesrc`, `Likes`) VALUES 

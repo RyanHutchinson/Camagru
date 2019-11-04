@@ -1,3 +1,7 @@
 <div class="content">
-    <h1>content</h1>
+    <div class="profileWrapper">
+        <div class="">
+            <?php Profile::loadProfile($_SESSION['user']);?>
+        </div>
+    </div>
 </div>

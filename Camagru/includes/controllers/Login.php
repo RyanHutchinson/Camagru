@@ -12,7 +12,7 @@ class Login extends Controller{
         }
 
         // FIXME: implement $hashp = hash('whirlpool', $password);
-        $user_data = self::query('SELECT * FROM users WHERE Username=? AND HashedPassword=? AND  Membertype=?;', array($username, $password, 1));
+        $user_data = self::query('SELECT * FROM users WHERE Username=? AND HashedPassword=?;', array($username, $password));
 
         //echo"<script> console.log('" . json_encode($user_data) . "')</script>";// FIXME: Remove me
 
@@ -30,7 +30,7 @@ class Login extends Controller{
     public static function loginForm(){
         if (isset($_SESSION['user']) && !empty($_SESSION['user'])){
             echo '<p>You are logged in!</p>';
-            header("refresh:3;url=" . Route::getDestination());
+            header("refresh:2;url=" . Route::getDestination('Profile'));
         }else{
             echo '
             <form method="POST" class="loginForm">

@@ -4,7 +4,7 @@
             <h1>Sign Up</h1>
         </div>
         <div>
-            <?php Register::registerForm();?>
+            <?php Register::loadRegister();?>
         </div>
     </div>
 </div>

@@ -51,6 +51,7 @@ font-family: Arial, Helvetica, sans-serif;
 
 .sticky {
     position: fixed;
+    z-index: 1;
     top: 0;
     width: 100%;
     }
@@ -63,6 +64,7 @@ font-family: Arial, Helvetica, sans-serif;
 /**************************************************/
 .content {
     padding: 16px;
+    top: 0;
     }
 /**************************************************/
 /* Footer */
@@ -114,9 +116,11 @@ font-family: Arial, Helvetica, sans-serif;
 .registerRedirect a{
 text-decoration: underline !important;
 }
+
 /**************************************************/
 /* Register */
 /**************************************************/
+
 .registerWrapper{
     max-width: 250px; 
     margin: auto;
@@ -146,3 +150,75 @@ text-decoration: underline !important;
 .registerRedirect a{
     text-decoration: underline !important;
     }
+
+/**************************************************/
+/* Profile */
+/**************************************************/
+
+.profileWrapper{
+    z-index: 1;
+    /* text-align: center; */
+    /* padding-top: 50px; */
+}
+
+.profileHeader{
+    /* width: 100%; */
+    height: auto;
+    /* background-color: blue; */
+    padding: 30px;
+}
+
+.profileHeader .pic{
+    /* background-color: burlywood; */
+    /* z-index: 0; */
+}
+
+.profileHeader .pic-standin{
+    background-color: lightblue;
+    border-radius: 5px;
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+}
+
+.profileHeader .infowrapper{
+    /* height: auto; */
+    margin: auto;
+    /* background-color: chocolate; */
+    /* padding: 10px; */
+}
+
+.profileHeader .infowrapper .form{
+    background-color: lightblue;
+    border-radius: 5px;
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+    height: auto;
+    width: 275px;
+    margin: auto;
+    padding: 30px;
+}
+    
+.profileForm div{
+    margin: 3px;
+    color: lightslategray;
+    }
+
+.profileForm input{
+    width: 200px;
+}
+    
+.profileForm button{
+    margin-top: 25px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+    color: lightslategrey;
+    }
+
+.profileFeed{
+    background-color: lightgreen;
+    height: 1080px;
+}
