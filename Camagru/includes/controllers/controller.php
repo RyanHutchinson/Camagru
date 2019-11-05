@@ -6,8 +6,9 @@ class Controller extends Database{
         require_once("./includes/views/$viewname.php");
         require_once('./includes/views/layout/footer.php');
     }
-    
-    //---------------------Login Container--------------------------------------
+    /***************************************************************************
+    **************************Login Container***********************************
+    ***************************************************************************/
     public static function loginContainer($user){
         
         if($user == ''){
@@ -15,12 +16,14 @@ class Controller extends Database{
         }else{
             echo'
             <a href="' . LOGOUT_PATH . '">Logout</a>
-            <a href="' . PROFILE_PATH . '">' . $user . '</a>
+            <a href="' . PROFILE_PATH . '" style="font-size: 15px">Welcom ' . $user . '</a>
             ';
         }
     }
 
-    //---------------------Verified User----------------------------------------
+    /***************************************************************************
+    **************************Verified User*************************************
+    ***************************************************************************/
 
     public static function verifiedUser($username){
 
@@ -34,7 +37,18 @@ class Controller extends Database{
         }
     }
 
-    //---------------------tokens--------------------------------------------
+    //---------------------input sanitization-----------------------------------
+
+    public static function sanitizeInput(){
+
+        foreach($_POST as $key => $value){
+            if($key == 'username' || $key == 'firstname' || $key == 'lastname'){
+                $_POST[$key] = htmlEntities($_POST[$key], ENT_QUOTES);
+            }
+        }
+    }
+
+    //---------------------tokens-----------------------------------------------
 
     public static function tokeniser(){
         $str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ()';
@@ -93,4 +107,11 @@ class Controller extends Database{
         }
     }
 }
+
+
+
+
+
+        //echo"<script> console.log('" . json_encode($user_data) . "')</script>";// FIXME: Remove me
+
 ?>

@@ -45,6 +45,10 @@ font-family: Arial, Helvetica, sans-serif;
     padding: 5px;
     }
 
+.loginContainer a .logout{
+    background-color: rgb(255, 255, 255);
+    }
+
 .header a {
     color: white;
     }
@@ -65,6 +69,7 @@ font-family: Arial, Helvetica, sans-serif;
 .content {
     padding: 16px;
     top: 0;
+    background-color: rgba(206, 234, 244, 0.34)
     }
 /**************************************************/
 /* Footer */
@@ -173,13 +178,18 @@ text-decoration: underline !important;
     /* z-index: 0; */
 }
 
-.profileHeader .pic-standin{
-    background-color: lightblue;
-    border-radius: 5px;
+.profileHeader .picWrapper{
+    /* background-color: rgb(255, 255, 255); */
+    border-radius: 50%;
     box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
     height: 200px;
     width: 200px;
     margin: auto;
+}
+
+.profileHeader .picWrapper img{
+    border: 3px solid rgba(160, 160, 160, 0.637);
+    border-radius: 50%;
 }
 
 .profileHeader .infowrapper{
@@ -190,7 +200,7 @@ text-decoration: underline !important;
 }
 
 .profileHeader .infowrapper .form{
-    background-color: lightblue;
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
     box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
     height: auto;
@@ -206,6 +216,8 @@ text-decoration: underline !important;
 
 .profileForm input{
     width: 200px;
+    /* I can't figure out the border stuff */
+    /* border-radius: 5px; */
 }
     
 .profileForm button{
@@ -219,6 +231,6 @@ text-decoration: underline !important;
     }
 
 .profileFeed{
-    background-color: lightgreen;
+    background-color: white;
     height: 1080px;
 }

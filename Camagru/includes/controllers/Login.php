@@ -1,67 +1,73 @@
 <?php
 class Login extends Controller{
 
-    //TODO: Fix the css in the below forms. Get it into the .css file
-    private function camaLogin($username, $password) {//error no input
-        if (empty($username) || empty($password)) {
-            return ('
-            <div style="padding-top:10px; color: red"> 
-            <p>Please enter a Username & Password!</p>
-            </div>
-            ');
-        }
+/******************************************************************************/
+/********************************LOGIN AND SESSION SETTER**********************/
+/******************************************************************************/
 
-        // FIXME: implement $hashp = hash('whirlpool', $password);
-        $user_data = self::query('SELECT * FROM users WHERE Username=? AND HashedPassword=?;', array($username, $password));
+	private function camaLogin($username, $password) {
 
-        //echo"<script> console.log('" . json_encode($user_data) . "')</script>";// FIXME: Remove me
+		if (empty($username) || empty($password)) {//---------------------------Return error string if any inputs are empty
+			return ('
+			<div style="padding-top:10px; color: red"> 
+			<p>Please enter a Username & Password!</p>
+			</div>
+			');
+		}
 
-        if ($user_data){//Setting session
-            $_SESSION['user'] = $username;
-        }else{//Error incorrect input
-            return ('
-            <div style="padding-top:10px; color: red">
-            <p>Invalid login credentials!</p>
-            </div>
-            ');
-        }
-    }
+		$user_data = self::query('SELECT * FROM users WHERE Username=?;', array($username));//-Pulling user data
 
-    public static function loginForm(){
-        if (isset($_SESSION['user']) && !empty($_SESSION['user'])){
-            echo '<p>You are logged in!</p>';
-            header("refresh:2;url=" . Route::getDestination('Profile'));
-        }else{
-            echo '
-            <form method="POST" class="loginForm">
-                <div>
-                <input type="text" placeholder="Username" name="user">
-                </div>
-                <div>
-                <input type="password" placeholder="Password" name="passwd">
-                </div>
-                <button type="submit" name="login" value="OK">Login</button>
-            </form>
-            <div style="padding-top: 25px">
-                <div>
-                    <span>Not registered?</span>
-                </div>
-                <div class="registerRedirect">
-                    <a href="' . Route::getDestination("Register", true) . '">Sign Up</a>  
-                </div>
-            </div>
-            ';
-            if ($_POST['login'] == 'OK') {
-                $error =  self::camaLogin($_POST['user'], $_POST['passwd']);
-                if (!$error){
-                    header("Refresh:0");//120");
-                }else{
-                    echo $error;
-                }
-            }
-            if ($_SESSION['user'] == 'admin')
-                header("Location: HOME_PATH");//TODO:Admin page
-        }
-    }
+		if(password_verify($password, $user_data[0]['HashedPassword'])){//------do passwords match?
+			$_SESSION['user'] = $username;//------------------------------------set that session
+		}else{//----------------------------------------------------------------no match? return error.
+			return ('
+			<div style="padding-top:10px; color: red">
+			<p>Invalid login credentials!</p>
+			</div>
+			');
+		}
+	}
+
+/******************************************************************************/
+/*****************************ENTRY POINT / FORM PRINTER***********************/
+/******************************************************************************/
+
+	public static function loginForm(){
+
+		if (isset($_SESSION['user']) && !empty($_SESSION['user'])){//-----------is user already logged in?
+			echo '<p>You are logged in!</p>';
+			header("refresh:2;url=" . Route::getDestination('Profile'));
+		}else{//----------------------------------------------------------------if not print form.
+			echo '
+			<form method="POST" class="loginForm">
+				<div>
+				<input type="text" placeholder="Username" name="user">
+				</div>
+				<div>
+				<input type="password" placeholder="Password" name="passwd">
+				</div>
+				<button type="submit" name="login" value="OK">Login</button>
+			</form>
+			<div style="padding-top: 25px">
+				<div>
+					<span>Not registered?</span>
+				</div>
+				<div class="registerRedirect">
+					<a href="' . Route::getDestination("Register", true) . '">Sign Up</a>  
+				</div>
+			</div>
+			';
+			if ($_POST['login'] == 'OK') {//------------------------------------button pressed?
+				$error =  self::camaLogin($_POST['user'], $_POST['passwd']);
+				if (!$error){//-------------------------------------------------is all good?
+					header("Refresh:0");
+				}else{//--------------------------------------------------------if not all is bad T-T
+					echo $error;
+				}
+			}
+			if ($_SESSION['user'] == 'admin')
+				header("Location: HOME_PATH");//TODO: Admin page stuff
+		}
+	}
 }      
 ?>
