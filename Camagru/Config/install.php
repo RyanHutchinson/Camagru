@@ -6,10 +6,17 @@
             $db = $conn->prepare($SQLstatement);
             $db->execute();
         }catch(PDOException $e){
-            echo $error . " has failed: " . $e->getMessage() . "<br />\n";
+            echo "\033[01;31m " . $error . " has failed: \"" . $e->getMessage() . "\" \033[0m \n";
+            usleep(300000);
+        }finally{
+            if(!$e){
+                echo "\033[01;32m " . $error . " successful!\033[0m \n";
+                usleep(300000);
+            }
         }
     }
 
+    
     executeSQL($create_database, "Creation of database", $conn);
     executeSQL($create_user_table, "Creation of users table", $conn);
     executeSQL($create_post_table, "Creation of posts table", $conn);

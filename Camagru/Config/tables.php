@@ -9,6 +9,7 @@ $create_user_table = "CREATE TABLE IF NOT EXISTS camagru.users (
     Email varchar(255) UNIQUE ,
     HashedPassword varchar(255),
     Membertype int DEFAULT 2,
+    Notifications int DEFAULT NULL,
     Token varchar(255) ,
     PRIMARY KEY (ID)
     );";
@@ -29,10 +30,13 @@ $create_comment_table = "CREATE TABLE IF NOT EXISTS camagru.comments (
     PRIMARY KEY (ID)
     );";
 
+$hashedpw = '\'$2y$10$jzLPuNw9q08QENJ20JWDxeJXyiE.frih0ajV.tExbgWiqsYNZv5SK\'';
+
 $add_test_users = "INSERT INTO camagru.users (`ID`, `Username`, `FirstName`, `LastName`, `Email`, `HashedPassword`, `Membertype`) VALUES
-					('1', 'Admin', 'Admin', 'Admin', 'admin@camagru.com', 'password', '42'),
-					('2', 'notverified', 'Firstname', 'Lastname', 'email@email.com', 'password', '1'),
-                    ('3', 'verified', 'Firstname', 'Lastname', 'email1@email.com', 'password', '2')
+					('1', 'Admin', 'Admin', 'Admin', 'admin@camagru.com', $hashedpw, '42'),
+					('2', 'notverified', 'Bob', 'Smith', 'bsmith@mailcatch.com', $hashedpw, '0'),
+                    ('3', 'verified', 'Bobette', 'Doe', 'bdoe@mailcatch.com', $hashedpw, '1'),
+                    ('4', 'RyanBigHead', 'Ryan', 'Hutchinson', 'rhutchinson@mailcatch.com', $hashedpw, '1')
 					;";
 
 $add_test_posts = "INSERT INTO camagru.posts (`ID`, `Userid`, `Imagesrc`, `Likes`) VALUES 

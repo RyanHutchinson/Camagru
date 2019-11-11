@@ -69,7 +69,7 @@ font-family: Arial, Helvetica, sans-serif;
 .content {
     padding: 16px;
     top: 0;
-    background-color: rgba(206, 234, 244, 0.34)
+    /* background-color: rgba(206, 234, 244, 0.34) */
     }
 /**************************************************/
 /* Footer */
@@ -176,6 +176,7 @@ text-decoration: underline !important;
 .profileHeader .pic{
     /* background-color: burlywood; */
     /* z-index: 0; */
+    margin: auto;
 }
 
 .profileHeader .picWrapper{
@@ -194,7 +195,7 @@ text-decoration: underline !important;
 
 .profileHeader .infowrapper{
     /* height: auto; */
-    margin: auto;
+    /* margin: auto; */
     /* background-color: chocolate; */
     /* padding: 10px; */
 }
@@ -204,21 +205,16 @@ text-decoration: underline !important;
     border-radius: 5px;
     box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
     height: auto;
-    width: 275px;
+    width: auto;
     margin: auto;
     padding: 30px;
 }
     
-.profileForm div{
+.profileForm .formInput input{
     margin: 3px;
     color: lightslategray;
-    }
-
-.profileForm input{
     width: 200px;
-    /* I can't figure out the border stuff */
-    /* border-radius: 5px; */
-}
+    }
     
 .profileForm button{
     margin-top: 25px;
@@ -233,4 +229,37 @@ text-decoration: underline !important;
 .profileFeed{
     background-color: white;
     height: 1080px;
+}
+
+/**************************************************/
+/* New Post */
+/**************************************************/
+
+.newPost{
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+}
+
+.newPost .feed{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.newPost .feed video{
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+    border-radius: 5px;
+}
+
+.newPost button{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+    color: lightslategrey;
+    }
+
+.newpost canvas{
+    text-align: center;
 }

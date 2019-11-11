@@ -4,4 +4,5 @@
             <?php Profile::loadProfile($_SESSION['user']);?>
         </div>
     </div>
+    
 </div>

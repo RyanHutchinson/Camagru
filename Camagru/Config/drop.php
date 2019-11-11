@@ -15,4 +15,6 @@ $drop_database = "DROP DATABASE `camagru`;";
 
 executeSQL($drop_database, "Deletion of database", $conn);
 
+echo"\033[01;31m Database has been removed from existance\n\033[0m";
+
 ?>

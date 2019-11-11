@@ -16,7 +16,7 @@ class Controller extends Database{
         }else{
             echo'
             <a href="' . LOGOUT_PATH . '">Logout</a>
-            <a href="' . PROFILE_PATH . '" style="font-size: 15px">Welcom ' . $user . '</a>
+            <a href="' . PROFILE_PATH . '" style="font-size: 15px">' . $user . '</a>
             ';
         }
     }
@@ -83,6 +83,44 @@ class Controller extends Database{
         <body>
         <p>Please click the link below to verify your email address</p>
         <a href="http://localhost:8080/camagru/Camagru/Profile?token=' . $token . '">Click Here</a>
+        </body>
+        </html>
+        ';
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=UTF-8';
+        $headers[] = "From: rhutchin@student.wethinkcode.co.za" . "\r\n";
+
+        $headers = implode("\r\n", $headers);
+        $error = mail($to, $subject, $message, $headers);
+
+        if ($error){
+            return;
+        }else{
+            return('
+            <div style="padding-top:10px; color: red">
+            <p>Failed to send email to</p>
+            <p>*' . $email . '*</p>
+            <p>with token</p>
+            <p>*' . $token . '*</p>
+            </div>
+            ');
+        }
+    }
+
+    //---------------------Password reset email sender----------------------------
+
+     public static function emailReset($email, $token){
+
+        $to = $email;
+        $subject = 'Password Reset';
+        $message = '
+        <html>
+        <head>
+        <title>Password Reset</title>
+        </head>
+        <body>
+        <p>Please click the link below to reset your Password</p>
+        <a href="http://localhost:8080/camagru/Camagru/ForgotPassword?token=' . $token . '">Click Here</a>
         </body>
         </html>
         ';

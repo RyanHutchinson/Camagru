@@ -44,16 +44,16 @@ class Login extends Controller{
 				<input type="text" placeholder="Username" name="user">
 				</div>
 				<div>
-				<input type="password" placeholder="Password" name="passwd">
+				<input title="1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character...i.e. (!@#$%^&*)" type="password" placeholder="Password" name="passwd">
 				</div>
 				<button type="submit" name="login" value="OK">Login</button>
 			</form>
 			<div style="padding-top: 25px">
 				<div>
-					<span>Not registered?</span>
+					<span style="font-size: 12px">Not registered?  <a href="' . Route::getDestination("Register", true) . '">   Sign Up</a></span>
 				</div>
-				<div class="registerRedirect">
-					<a href="' . Route::getDestination("Register", true) . '">Sign Up</a>  
+                <div>
+					<span style="font-size: 12px">Forgot password?  <a href="' . Route::getDestination("ForgotPassword", true) . '">   Click Here</a></span>
 				</div>
 			</div>
 			';

@@ -92,10 +92,10 @@ class Register extends Controller{
 					<input type="email" placeholder="email" name="email">
 				</div>
 				<div style="padding-top: 10px">
-					<input type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" placeholder="Password" name="password">
+					<input title="1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character...i.e. (!@#$%^&*)" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" placeholder="Password" name="password">
 				</div>
 				<div>
-					<input type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" placeholder="RE-enter Password" name="passwordValidator">
+					<input title="1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character...i.e. (!@#$%^&*)" type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" placeholder="RE-enter Password" name="passwordValidator">
 				</div>
 				<div style="font-size: 10px; margin-top: 10px">
 					<p>Please note:</p>

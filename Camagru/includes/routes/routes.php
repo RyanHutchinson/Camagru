@@ -42,4 +42,12 @@ Route::set('Register', function(){
 Route::set('Profile', function(){
     Profile::CreateView('Profile');
 });
+
+Route::set('ForgotPassword', function(){
+    ForgotPassword::CreateView('ForgotPassword');
+});
+
+Route::set('NewPost', function(){
+    NewPost::CreateView('NewPost');
+});
 ?>
