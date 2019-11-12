@@ -240,14 +240,16 @@ text-decoration: underline !important;
 }
 
 .newPost .feed{
+    
     text-align: center;
     padding-top: 10px;
 }
-
+/* 
 .newPost .feed video{
     box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
     border-radius: 5px;
-}
+    padding: 5px;
+} */
 
 .newPost button{
     margin-top: 15px;
@@ -260,6 +262,9 @@ text-decoration: underline !important;
     color: lightslategrey;
     }
 
-.newpost canvas{
+.comment input{
     text-align: center;
+    padding: 5px;
+    width: 340px;
+    height: 200px;
 }

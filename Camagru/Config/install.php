@@ -21,7 +21,9 @@
     executeSQL($create_user_table, "Creation of users table", $conn);
     executeSQL($create_post_table, "Creation of posts table", $conn);
     executeSQL($create_comment_table, "Creation of comments table", $conn);
+    executeSQL($create_image_table, "Creation of image table", $conn);//
     executeSQL($add_test_users, "Insertion of test users", $conn);
     executeSQL($add_test_posts, "Insertion of test posts", $conn);
     executeSQL($add_test_comments, "Insertion of test comments", $conn);
+    executeSQL($add_test_images, "Insertion of test images", $conn);
 ?>

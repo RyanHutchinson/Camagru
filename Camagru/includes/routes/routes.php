@@ -1,6 +1,7 @@
 <?php
 
 define('CSS_PATH', Route::getDestination('css/style.css'));
+define('IMG_ROUTE', Route::getDestination('img/'));
 define('HOME_PATH', Route::getDestination(''));
 define('ABOUT_PATH', Route::getDestination('About-us'));
 define('CONTACT_PATH', Route::getDestination('Contact-us'));

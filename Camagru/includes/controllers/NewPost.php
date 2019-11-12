@@ -1,8 +1,29 @@
 <?php
 class NewPost extends Controller{
     
+    public static function savePost(){
 
-    public static function javaScript(){
+        $img = $_POST['hidden'];
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data = base64_decode($img);
+        $file = ROOT . '/img/' . uniqid($_SESSION['user']) . '.png';
+        
+        if(file_put_contents($file, $data)){
+
+            $user_data = self::query('SELECT * FROM `users` WHERE Username=?', array($_SESSION['user']));
+            $user_data = $user_data[0];
+            print_r($user_data);
+            
+            //self::query('INSERT INTO `images` (`Userid`, `Imagesrc`)', array($user_data['ID'], 'poop'));
+            // self::query('INSERT INTO `posts` (`Userid`, `Imagesrc`) VALUES(?, ?)', array($user_data['ID'], $file));
+        
+        }else{
+            echo'something went wrong...';
+        }
+    }
+
+    public static function loadJavaScript(){
         ?>
             <script>
             // Grab elements, create settings, etc.
@@ -24,14 +45,31 @@ class NewPost extends Controller{
 
             // Trigger photo take
             document.getElementById("snap").addEventListener("click", function() {
-                context.drawImage(video, 0, 0, 640, 480);
+                context.drawImage(video, 0, 0, 340, 260);
             });
 
-            document.getElementById("upload").addEventListener("click", function(){
-                var thing = document.getElementById("fileToUpload");
-                
-                //context.drawImage(image, 0, 0);
+            // Element for Uploading to canvas
+            var imageLoader = document.getElementById('imageLoader');
+
+            // Function to diplay the image on canvas
+            imageLoader.addEventListener('change', handleImage, false);
+            
+            function handleImage(e){
+                var reader = new FileReader();
+                reader.onload = function(event){
+                    var img = new Image();
+                    img.onload = function(){
+                        context.drawImage(img,0,0, 340, 260);
+                    }
+                    img.src = event.target.result;
+                }
+                reader.readAsDataURL(e.target.files[0]);     
+            }
+
+            document.getElementById('post').addEventListener('click', function(e){
+                document.getElementById('hidden').value = canvas.toDataURL('image/png');
             });
+            
             </script>
         <?php
     }
