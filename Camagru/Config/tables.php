@@ -15,7 +15,7 @@ $create_user_table = "CREATE TABLE IF NOT EXISTS camagru.users (
     );";
     
 $create_post_table = "CREATE TABLE IF NOT EXISTS camagru.posts (
-    ID int NOT NULL,
+    ID int NOT NULL AUTO_INCREMENT,
     Userid int NOT NULL,
     Imagesrc varchar(255),
     Likes int DEFAULT 0,
@@ -23,14 +23,14 @@ $create_post_table = "CREATE TABLE IF NOT EXISTS camagru.posts (
     );";
 
 $create_image_table = "CREATE TABLE IF NOT EXISTS camagru.images (
-    ID int NOT NULL,
+    ID int NOT NULL AUTO_INCREMENT,
     Userid int NOT NULL,
     Imagesrc varchar(255),
     PRIMARY KEY (ID)
     );";
 
 $create_comment_table = "CREATE TABLE IF NOT EXISTS camagru.comments (
-    ID int NOT NULL,
+    ID int NOT NULL AUTO_INCREMENT,
     Postid int NOT NULL,
     Userid int,
     Comment TEXT NOT NULL,
