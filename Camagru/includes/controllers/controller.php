@@ -42,7 +42,7 @@ class Controller extends Database{
     public static function sanitizeInput(){
 
         foreach($_POST as $key => $value){
-            if($key == 'username' || $key == 'firstname' || $key == 'lastname'){
+            if($key == 'username' || $key == 'firstname' || $key == 'lastname' || $key == 'Caption' ){
                 $_POST[$key] = htmlEntities($_POST[$key], ENT_QUOTES);
             }
         }

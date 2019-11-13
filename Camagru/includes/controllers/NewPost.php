@@ -1,7 +1,12 @@
 <?php
+
+//TODO: Finish the previous image feed.
+
 class NewPost extends Controller{
     
     public static function savePost(){
+
+        self::sanitizeInput();
 
         $img = $_POST['hidden'];
         $img = str_replace('data:image/png;base64,', '', $img);
@@ -19,17 +24,18 @@ class NewPost extends Controller{
             join users on posts.Userid = users.ID
             JOIN comments on comments.Userid = users.ID and comments.Postid = posts.ID
             WHERE users.ID = 4
+
+            ******************The query below is for comments remember it!********************* 
+            self::query('INSERT INTO comments (Userid, Postid, Comment) VALUES (?, (SELECT p.ID from posts as p where p.Userid = ? ORDER BY p.ID DESC limit 1), ?)', array($user_data['ID'], $user_data['ID'], $_POST['comment']));
+
             */
 
             try {
-                self::query('INSERT INTO `images` (`Userid`, `Imagesrc`) VALUES(?,?);', array($user_data['ID'], $file));
-                self::query('INSERT INTO `posts` (`Userid`, `Imagesrc`) VALUES(?, ?)', array($user_data['ID'], $file));
-                self::query('INSERT INTO comments (Userid, Postid, Comment) VALUES (?, (SELECT p.ID from posts as p where p.Userid = ? ORDER BY p.ID DESC limit 1), ?)', array($user_data['ID'], $user_data['ID'], $_POST['comment']));
+                self::query('INSERT INTO images (Userid, Imagesrc) VALUES(?,?);', array($user_data['ID'], $file));
+                self::query('INSERT INTO posts (Userid, Caption, Imagesrc) VALUES(?, ?, ?)', array($user_data['ID'], $_POST['Caption'], $file));
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-                        
-        
         }else{
             echo'something went wrong...';
         }

@@ -17,6 +17,7 @@ $create_user_table = "CREATE TABLE IF NOT EXISTS camagru.users (
 $create_post_table = "CREATE TABLE IF NOT EXISTS camagru.posts (
     ID int NOT NULL AUTO_INCREMENT,
     Userid int NOT NULL,
+    Caption varchar (255),
     Imagesrc varchar(255),
     Likes int DEFAULT 0,
     PRIMARY KEY (ID)
@@ -52,11 +53,11 @@ $add_test_images = "INSERT INTO camagru.images (`ID`, `Userid`, `Imagesrc`) VALU
                     ('3', '1', 'img/test.png')
 					;";
 
-$add_test_posts = "INSERT INTO camagru.posts (`ID`, `Userid`, `Imagesrc`) VALUES 
-                    ('1', '4', 'img/Default.png'), 
-                    ('2', '4', 'img/Default.png'), 
-                    ('3', '4', 'img/Default.png'),
-                    ('4', '4', 'img/Default.png')
+$add_test_posts = "INSERT INTO camagru.posts (`ID`, `Userid`, `Caption`, `Imagesrc`) VALUES 
+                    ('1', '4', 'This is a caption. :)','img/Default.png'), 
+                    ('2', '4', 'This is a caption. :)','img/Default.png'), 
+                    ('3', '4', 'This is a caption. :)','img/Default.png'),
+                    ('4', '4', 'This is a caption. :)','img/Default.png')
                     ;";
 
 $add_test_comments = "INSERT INTO camagru.comments (`ID`, `Postid`, `Userid`, `Comment`) VALUES 

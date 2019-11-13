@@ -268,3 +268,39 @@ text-decoration: underline !important;
     width: 340px;
     height: 200px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************************************/
+/* testing*/
+/**************************************************/
+
+#postFeed {
+    /* We need to limit the height and show a scrollbar */
+    overflow: auto;
+    Height:800px;
+  
+    /* Optional, only to check that it works with margin/padding */
+    margin: 30px;
+    padding: 20px;
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+  }
+  
+  /* Optional eye candy below: */
+  li {
+    padding: 10px;
+    list-style-type: none;
+  }
+  li:hover {
+    background: #ccc;
+  }

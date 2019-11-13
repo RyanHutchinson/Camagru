@@ -17,17 +17,17 @@ if(!$_GET['url']){
 </head>	
 	<body>
 
-		<div class="top-container">
+		<!--TODO:Fix this <div class="top-container">
 			<h1>Camagru</h1>
 			<p>the above is to become a logo</p>
-		</div>
+		</div> -->
 
 		<div class="header" id="myHeader">
 			
 				<div class="menuButtons">
 					<a href="<?=HOME_PATH?>">Home</a>
-					<a href="<?=ABOUT_PATH?>">About Us</a>
-					<a href="<?=CONTACT_PATH?>">Contact-us</a>
+					<!--TODO: this? <a href="<?=ABOUT_PATH?>">About Us</a>
+					<a href="<?=CONTACT_PATH?>">Contact-us</a> -->
 				</div>
 				<div class="loginContainer">
                     <!-- <a href="<?=REGISTER_PATH?>">Register</a> -->
