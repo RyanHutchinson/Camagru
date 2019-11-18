@@ -13,10 +13,16 @@ class Database{
         }
     }
 
-    public static function query($query, $params = array()){
+    public static function query($query, $params = array(), $types = array()) {
         $statement = self::connect()->prepare($query);
-        $statement->execute($params);
-
+        if (empty($types))
+            $statement->execute($params);
+        else {
+            for($i = 0; $i < count($params); $i++){
+                $statement->bindParam($i + 1, $params[$i], $types[$i]);
+            }
+            $statement->execute();
+        }
         if (explode(' ', $query)[0] == 'SELECT'){
             return ($statement->fetchALL());
             //return($data);

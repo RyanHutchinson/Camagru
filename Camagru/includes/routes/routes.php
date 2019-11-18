@@ -9,6 +9,7 @@ define('LOGIN_PATH', Route::getDestination('Login'));
 define('LOGOUT_PATH', Route::getDestination('Logout'));
 define('REGISTER_PATH', Route::getDestination('Register'));
 define('PROFILE_PATH', Route::getDestination('Profile'));
+define('JAVASCRIPT_PATH', Route::getDestination('JS/scripts.js'));
 define('BOOTSTRAP_PATH', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css');
 
 Route::set('', function(){
@@ -50,5 +51,9 @@ Route::set('ForgotPassword', function(){
 
 Route::set('NewPost', function(){
     NewPost::CreateView('NewPost');
+});
+
+Route::set('getPost', function(){
+    getPost::fetchOne();
 });
 ?>

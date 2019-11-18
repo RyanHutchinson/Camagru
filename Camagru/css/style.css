@@ -285,15 +285,14 @@ text-decoration: underline !important;
 /* testing*/
 /**************************************************/
 
-#postFeed {
+#postFeedContainer {
     /* We need to limit the height and show a scrollbar */
     overflow: auto;
-    Height:800px;
+    Height: calc(100vh - 86px);
   
     /* Optional, only to check that it works with margin/padding */
-    margin: 30px;
+    /* margin: 30px; */
     padding: 20px;
-    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
   }
   
   /* Optional eye candy below: */
@@ -304,3 +303,12 @@ text-decoration: underline !important;
   li:hover {
     background: #ccc;
   }
+
+.postCard{
+    margin: auto;
+    max-width: 400px;
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
