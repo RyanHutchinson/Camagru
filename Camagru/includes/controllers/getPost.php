@@ -1,10 +1,8 @@
-<?php
+ <?php
 class getPost extends Controller{
     
     public static function fetchOne(){   
         $posts = self::query('SELECT * FROM posts LIMIT 5 OFFSET ?', array($_GET['postId'] * 5), array(PDO::PARAM_INT));
-        //print_r($posts);
-        //TODO: All the below.
         
         if(count($posts) == 0 ){
             http_response_code(204);
@@ -14,7 +12,6 @@ class getPost extends Controller{
         foreach($posts as $post)
         {
             $comments = self::query('SELECT * FROM comments WHERE Postid=?', array($post['ID']), array(PDO::PARAM_INT));
-          //  print_r($comments);
             ?> 
             <div class="postCard col-lg-4 col-lg-offset-4">
                 <div style="text-align: center; padding-top: 10px">
@@ -25,20 +22,19 @@ class getPost extends Controller{
                 </div>
                 <div>
                     <?php
-                        for($i = 0; $i < 3; $i++){
+                        for($i = 0; $i < 2; $i++){
                             if($comments[$i]['Comment']){
                             ?>
                             <div>
-                                <p style="margin-left: 15px"><?php echo substr($comments[0]['Comment'], 0, 100);?></p>
-                                <hr>
+                                <p style="margin-left: 15px; margin-right: 15px; margin-bottom: 0px; font-size: 10px"><?php echo substr($comments[$i]['Comment'], 0, 100);?></p>
+                                <hr style="margin-top: 4px; margin-bottom: 4px">
                             </div>
                             <?php
                             }
-                            if(1 == 2){//($i = 1) && ($comments[2])){
+                            if(($i == 1) && (isset($comments[2]))){
                                 ?>
                                 <div>
-                                    <a href="www.google.com">things</a>
-                                    <hr>
+                                    <p style="margin-left: 120px; margin-right: 15px; margin-bottom: 0px; font-size: 10px">Click below to see more</p>
                                 </div>
                                 <?php
                             }
@@ -46,12 +42,12 @@ class getPost extends Controller{
                     ?>
                 </div>
                 <div>
-                    <button style="margin-bottom: 5px; margin-left: 15px" type="submit" name="postComment" id="postComment" value="OK">Comment</button>
+                    <button onclick="postRedirect(<?php echo $post['ID'];?>)" id="postView">View More</button>
                 </div>
-            </div>
-            <?php
+                </div>
+                <?php
         }
     }
-        
+    
 }
 ?>

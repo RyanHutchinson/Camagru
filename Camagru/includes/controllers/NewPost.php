@@ -12,7 +12,7 @@ class NewPost extends Controller{
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
         $data = base64_decode($img);
-        $file = '/img/' . uniqid($_SESSION['user']) . '.png';
+        $file = 'img/' . uniqid($_SESSION['user']) . '.png';
         
         if(file_put_contents(ROOT . $file, $data)){
 

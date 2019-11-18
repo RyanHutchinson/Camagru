@@ -17,7 +17,7 @@ if(!$_GET['url']){
 </head>	
 	<body>
 
-		<!--TODO:Fix this <div class="top-container">
+	    <!-- <div class="top-container">
 			<h1>Camagru</h1>
 			<p>the above is to become a logo</p>
 		</div> -->

@@ -10,4 +10,4 @@
         </div>
     </div>
 </div>
-<!-- TODO: everything -->
+<script src="<?=HOME_JAVASCRIPT_PATH?>"></script>

@@ -244,12 +244,6 @@ text-decoration: underline !important;
     text-align: center;
     padding-top: 10px;
 }
-/* 
-.newPost .feed video{
-    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
-    border-radius: 5px;
-    padding: 5px;
-} */
 
 .newPost button{
     margin-top: 15px;
@@ -269,20 +263,8 @@ text-decoration: underline !important;
     height: 200px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**************************************************/
-/* testing*/
+/* Post feed home*/
 /**************************************************/
 
 #postFeedContainer {
@@ -311,4 +293,19 @@ text-decoration: underline !important;
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
+.postCard button{
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    width: 100px;
+    box-shadow:rgba(0,0,0,.15) 0 0 6px,rgba(0,0,0,.1) 0 0 1px;
+    color: lightslategrey;
+    }
+/**************************************************/
+/* Post page*/
+/**************************************************/
 
