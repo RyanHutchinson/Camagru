@@ -144,6 +144,31 @@ class Controller extends Database{
             ');
         }
     }
+
+    //---------------------Notification email sender----------------------------
+
+    public static function emailNotify($email){
+
+        $to = $email;
+        $subject = 'Comment Notification';
+        $message = '
+        <html>
+        <head>
+        <title>Password Reset</title>
+        </head>
+        <body>
+        <p>You got a comment/like on one of your posts!</p>
+        </body>
+        </html>
+        ';
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=UTF-8';
+        $headers[] = "From: rhutchin@student.wethinkcode.co.za" . "\r\n";
+
+        $headers = implode("\r\n", $headers);
+        $error = mail($to, $subject, $message, $headers);
+
+    }
 }
 
 

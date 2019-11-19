@@ -7,8 +7,10 @@ class Post extends Controller{
             $likes = self::query('SELECT * FROM Posts where ID=?', array($_POST['postID']), array(PDO::PARAM_INT));
             $like = $likes[0]['Likes'] + 1;
             $arr = array($like, $_POST['postID']);
-            self::query('UPDATE posts SET Likes=? WHERE ID=?;', $arr);//, array(PDO::PARAM_INT, PDO::PARAM_INT));
+            self::query('UPDATE posts SET Likes=? WHERE ID=?;', $arr);
             echo "Likes " . $like;
+            $userdata = self::query('SELECT * FROM users WHERE ID=?', array($likes[0]['Userid']));
+            self::emailNotify($userdata[0]['Email']);
         }
         catch(PDOException $e)
         {
@@ -18,8 +20,10 @@ class Post extends Controller{
 
     public static function saveComment($newComment, $postID){
         $userdata = self::query('SELECT * FROM users WHERE Username=?', array($_SESSION['user']));
-        $userID = $userdata[0]['ID'];
-        self::query('INSERT INTO Comments (Postid, Userid, Comment) VALUES(?, ?, ?)', array($postID, $userID, $newComment));
+        self::query('INSERT INTO Comments (Postid, Userid, Comment) VALUES(?, ?, ?)', array($postID, $userID[0]['ID'], $newComment));
+        if(isset($userdata[0]['Notifications'])){
+            self::emailNotify($userdata[0]['Email']);
+        }
         header('refresh:0');
     }
 
@@ -27,10 +31,7 @@ class Post extends Controller{
         
         $post = self::query('SELECT * FROM posts WHERE ID=?',(array($postID)));
         $post = $post[0];
-
         $comments = self::query('SELECT * FROM comments WHERE Postid=?', array($postID));
-
-//       echo'<script>console.log(' . print_r($comments) . ');</script>';
 
         ?>
         <div class="postCard col-lg-4 col-lg-offset-4" style="margin-top: 10px">
@@ -54,13 +55,20 @@ class Post extends Controller{
                             }
                         }
                         ?>
-                        <div style="text-align: center">
-                            <form method="post">
-                                <textarea name="Caption" rows="2" cols="45" maxlength="250" placeholder="Comment of 100 characters..."></textarea>
-                                <button type="submit" name="newComment" id="post" value="OK">Post</button>
-                                <?php if(isset($_POST['newComment'])){self::saveComment($_POST['Caption'], $postID);}?>
-                            </form>
-                        </div>
+                        <?php
+
+                        if($_SESSION['user'] != ''){
+                            ?>
+                            <div style="text-align: center">
+                                <form method="post">
+                                    <textarea name="Caption" rows="2" cols="45" maxlength="250" placeholder="Comment of 100 characters..."></textarea>
+                                    <button type="submit" name="newComment" id="post" value="OK">Post</button>
+                                    <?php if(isset($_POST['newComment'])){self::saveComment($_POST['Caption'], $postID);}?>
+                                </form>
+                            </div>
+                            <?php
+                        } 
+                        ?>
                 </div>
             </div>
         <?php
