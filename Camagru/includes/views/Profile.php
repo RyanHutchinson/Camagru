@@ -8,7 +8,7 @@
     <div class="container" style="width: 100%; padding: 0;">
         <div class="row" style="margin: 0">
             <div class="col-lg-12" style="padding: 0">
-                <div id='postFeedContainer' class="">
+                <div id='postFeedContainer' style="padding-top: 2px" class="">
                     <ul id='postFeed'>
                     </ul>
                 </div>

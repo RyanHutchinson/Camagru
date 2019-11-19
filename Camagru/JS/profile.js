@@ -25,3 +25,20 @@ loadMore();
 function postRedirect(postID){
     window.location = window.location.href + 'Post?postid=' + postID;
 }
+
+
+function makethedeletefornowremovemelater(postID)
+{
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/camagru/Camagru/getPost', true);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            alert(xhr.responseText);
+            window.location.reload();
+        }
+    }
+    xhr.send('method=Delete&postID=' + postID);
+}

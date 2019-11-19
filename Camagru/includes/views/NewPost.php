@@ -26,7 +26,7 @@
                             <input id="hidden" name ="hidden" type="hidden">
                         </div>
                         <div>
-                            <textarea name="Caption" rows="2" cols="45" maxlength="50" placeholder="Title of 50 characters..."></textarea>
+                            <textarea name="Caption" rows="2" cols="45" minlength= "1" maxlength="50" placeholder="Title of 50 characters..."></textarea>
                         </div>
                         <button type="submit" name="Post" id="post" value="OK">Post</button>
                         <?php if(isset($_POST['Post'])) NewPost::savePost();?>

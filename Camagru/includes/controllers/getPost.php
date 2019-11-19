@@ -2,6 +2,13 @@
 class getPost extends Controller{
     
     public static function fetchOne(){
+
+        if(isset($_POST['method'])){//------------------for some reason this needs to be here or everything breaks.
+            self::query('DELETE FROM posts WHERE ID=?', array($_POST['postID']), array(PDO::PARAM_INT));
+            echo 'Deleted';
+            die();
+        }
+
         //echo $_SERVER['REQUEST_URI'];
         if($_GET['Location'] == '/camagru/Camagru/Profile'){
             $userid = self::query('SELECT * From users WHERE Username=?', array($_SESSION['user']));
@@ -47,7 +54,11 @@ class getPost extends Controller{
                     </div>
                     <?php else :?>
                     <div style="text-align: center">
-                        <button onclick="" id="deletePost">Delete post</button>
+                            <!-- <form method="POST"> -->
+                                <!-- <input name="ID" id="ID" type="hidden" value="<?php echo $post['ID'];?>"> -->
+                                <button onclick="makethedeletefornowremovemelater(<?php echo $post['ID'];?>)" name="deletePost" id="deletePost" value="OK">Delete post</button>
+                                
+                            <!-- </form> -->
                     </div>
                     <?php endif?>
                 </div>

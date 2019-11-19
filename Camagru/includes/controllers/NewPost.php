@@ -13,8 +13,8 @@ class NewPost extends Controller{
         $img = str_replace(' ', '+', $img);
         $data = base64_decode($img);
         $file = 'img/' . uniqid($_SESSION['user']) . '.png';
-        
-        if(file_put_contents(ROOT . $file, $data)){
+
+        if(file_put_contents(ROOT . '/' . $file, $data)){
 
             $user_data = self::query('SELECT * FROM `users` WHERE Username=?', array($_SESSION['user']));
             $user_data = $user_data[0];
@@ -37,7 +37,7 @@ class NewPost extends Controller{
                 echo $e->getMessage();
             }
         }else{
-            echo'something went wrong...';
+            //echo'something went wrong...';
         }
     }
 
