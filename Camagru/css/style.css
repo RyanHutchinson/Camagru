@@ -171,6 +171,8 @@ text-decoration: underline !important;
     height: auto;
     /* background-color: blue; */
     padding: 30px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .profileHeader .pic{

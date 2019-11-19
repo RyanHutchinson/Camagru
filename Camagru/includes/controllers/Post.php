@@ -1,6 +1,21 @@
 <?php
 class Post extends Controller{
     
+    public static function addLike(){
+        try
+        {
+            $likes = self::query('SELECT * FROM Posts where ID=?', array($_POST['postID']), array(PDO::PARAM_INT));
+            $like = $likes[0]['Likes'] + 1;
+            $arr = array($like, $_POST['postID']);
+            self::query('UPDATE posts SET Likes=? WHERE ID=?;', $arr);//, array(PDO::PARAM_INT, PDO::PARAM_INT));
+            echo "Likes " . $like;
+        }
+        catch(PDOException $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+
     public static function saveComment($newComment, $postID){
         $userdata = self::query('SELECT * FROM users WHERE Username=?', array($_SESSION['user']));
         $userID = $userdata[0]['ID'];
@@ -23,7 +38,7 @@ class Post extends Controller{
                     <img src="<?php echo $post['Imagesrc'];?>" alt="a photo" style="margin-bottom: 10px">
                 </div>
                 <div style="text-align: center">
-                    <button>Likes <?php echo $post['Likes'];?></button>
+                    <button id="likeButton" onclick="addLike(<?php echo $post['ID'];?>)">Likes <?php echo $post['Likes'];?></button>
                     <p style="margin-left: 15px"><b><?php echo $post['Caption'];?></b></p>
                 </div>
                 <div>
@@ -32,7 +47,7 @@ class Post extends Controller{
                             if($comments[$i]['Comment']){
                             ?>
                             <div>
-                                <p style="margin-left: 15px; margin-right: 15px; margin-bottom: 0px; font-size: 10px"><?php echo substr($comments[$i]['Comment'], 0, 100);?></p>
+                                <p style="margin-left: 15px; margin-right: 15px; margin-bottom: 0px; font-size: 10px"><?php echo $comments[$i]['Comment'];?></p>
                                 <hr style="margin-top: 4px; margin-bottom: 4px">
                             </div>
                             <?php
@@ -41,7 +56,7 @@ class Post extends Controller{
                         ?>
                         <div style="text-align: center">
                             <form method="post">
-                                <textarea name="Caption" rows="2" cols="45" maxlength="50" placeholder="Comment of 100 characters..."></textarea>
+                                <textarea name="Caption" rows="2" cols="45" maxlength="250" placeholder="Comment of 100 characters..."></textarea>
                                 <button type="submit" name="newComment" id="post" value="OK">Post</button>
                                 <?php if(isset($_POST['newComment'])){self::saveComment($_POST['Caption'], $postID);}?>
                             </form>

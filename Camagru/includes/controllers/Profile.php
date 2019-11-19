@@ -130,7 +130,6 @@ echo'
                             </div>
                         </form>
                     </div>
-                    <hr>
                     ';
 
         /*****************************Printing the profile feed****************/

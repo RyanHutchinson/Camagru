@@ -9,11 +9,13 @@ define('LOGIN_PATH', Route::getDestination('Login'));
 define('LOGOUT_PATH', Route::getDestination('Logout'));
 define('REGISTER_PATH', Route::getDestination('Register'));
 define('PROFILE_PATH', Route::getDestination('Profile'));
+define('POST_PATH', Route::getDestination('Post'));
 define('BOOTSTRAP_PATH', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css');
 
 //Javascript paths
 define('HOME_JAVASCRIPT_PATH', Route::getDestination('JS/home.js'));
 define('POST_JAVASCRIPT_PATH', Route::getDestination('JS/post.js'));
+define('PROFILE_JAVASCRIPT_PATH', Route::getDestination('JS/profile.js'));
 
 Route::set('', function(){
     Home::CreateView('Home');
@@ -58,6 +60,10 @@ Route::set('NewPost', function(){
 
 Route::set('getPost', function(){
     getPost::fetchOne();
+});
+
+Route::set('addLike', function(){
+    Post::addLike();
 });
 
 Route::set('Post', function(){
