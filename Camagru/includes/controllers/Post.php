@@ -39,7 +39,7 @@ class Post extends Controller{
                     <img src="<?php echo $post['Imagesrc'];?>" alt="a photo" style="margin-bottom: 10px">
                 </div>
                 <div style="text-align: center">
-                    <button id="likeButton" onclick="addLike(<?php echo $post['ID'];?>)">Likes <?php echo $post['Likes'];?></button>
+                    <button id="likeButton" onclick="addLike(<?php echo $post['ID'];?>,<?php echo $_SESSION['user'];?>)">Likes <?php echo $post['Likes'];?></button>
                     <p style="margin-left: 15px"><b><?php echo $post['Caption'];?></b></p>
                 </div>
                 <div>

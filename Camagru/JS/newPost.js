@@ -21,6 +21,8 @@ document.getElementById("snap").addEventListener("click", function() {
     document.getElementById('canvasDiv').style.display="";
     document.getElementById('stickerBlock').style.display="";
     document.getElementById('snapPrompt').style.display="none";
+    document.getElementById('titleTextArea').style.display="";
+    document.getElementById('postButton').style.display="";
 });
 
 // Element for Uploading to canvas
@@ -39,9 +41,10 @@ function handleImage(e){
         img.src = event.target.result;
     }
     reader.readAsDataURL(e.target.files[0]);
-    document.getElementById('canvasDiv').style.display="";
-    document.getElementById('stickerBlock').style.display="";
-    document.getElementById('snapPrompt').style.display="none";
+    // document.getElementById('canvasDiv').style.display="";
+    // document.getElementById('stickerBlock').style.display="";
+    // document.getElementById('snapPrompt').style.display="none";
+    
 }
 
 document.getElementById('post').addEventListener('click', function(e){
@@ -65,8 +68,6 @@ function addSticker(imgSRC, imgPosition){
             context.drawImage(image,280,10, 50, 50);
         }
     }
-    document.getElementById('titleTextArea').style.display="";
-    document.getElementById('postButton').style.display="";
 }
 
 function test(){

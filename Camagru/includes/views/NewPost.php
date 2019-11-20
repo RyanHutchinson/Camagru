@@ -1,3 +1,9 @@
+<?php if($_SESSION['user'] == '') :?>
+<div style="text-align: center">
+	<h1>You are not logged in.</h1>
+	<a href="<?=LOGIN_PATH?>"><p style="font-size: 15px">Click here to login</p></a>
+</div>
+<?php else :?>
 <div class="container" style="padding-top: 50px; padding-bottom: 100px">
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 newPost">
@@ -26,7 +32,6 @@
 					<form id="post" name="post" method="post">
 						<div class="canvas" id="canvasDiv" style="margin-bottom: 15px; display:none">
 							<canvas id="canvas" name="canvas" width="340" height="260"></canvas>
-							<!-- <canvas id="blank" style="display: hidden"></canvas> -->
 							<input id="hidden" name ="hidden" type="hidden">
 						</div>
 						<div id="snapPrompt">
@@ -35,7 +40,7 @@
 						<div id="stickerBlock" style="display: none">
 						<hr>
 							<div style="text-align: center; margin-bottom: 20px">
-								<p style="font-size: 10px">Please select at least one of the stickers below!</p>
+								<p style="font-size: 10px">Choose a sticker or two to add some flare!</p>
 							</div>
 							<div class="row">
 								<div class="col-lg-4">
@@ -51,7 +56,7 @@
 						</div>
 						<hr>
 						<div id="titleTextArea" style="display: none">
-							<p style="font-size: 10px">Please write a title below!</p>
+							<p style="font-size: 10px">Posts are better with titles!</p>
 							<textarea name="Caption" rows="2" cols="45" minlength= "1" maxlength="50" placeholder="Title of 50 characters..."></textarea>
 						</div>
 						<button style="display:none" type="submit" name="Post" id="postButton" value="OK">Post</button>
@@ -63,3 +68,4 @@
 	</div>
 </div>
 <script src="<?=NEWPOST_JAVASCRIPT_PATH?>"></script>
+<?php endif?>

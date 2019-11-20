@@ -6,7 +6,7 @@ class Profile extends Controller{
     /******************************************************************************/
     
     //------------------------------------------------------------------------------//TODO: all this
-    private function profileUpdate($username, $firstname, $lastname, $email, $newpassword, $currentpassword, $notifications) {
+    private function profileUpdate($username, $newUsername, $firstname, $lastname, $email, $newpassword, $currentpassword, $notifications) {
         
         /*************************grabbing user data***************************/
         $user_data = self::query('SELECT * FROM users WHERE Username=?;', array($username));
@@ -15,7 +15,7 @@ class Profile extends Controller{
   
         
         /*************************checking for empties*************************/
-        if (empty($firstname) && empty($lastname) && empty($email) && empty($newpassword) && empty($currentpassword) && ($notifications == $user_data['Notifications'])) {//input?
+        if (empty($newUsername) && empty($firstname) && empty($lastname) && empty($email) && empty($newpassword) && empty($currentpassword) && ($notifications == $user_data['Notifications'])) {//input?
             return ('
             <div style="padding-top:30px; color: red; padding-left: 40px; font-size: 13px"> 
             <p>* Nothing to update *</p>
@@ -24,6 +24,19 @@ class Profile extends Controller{
          }
 
         /*************************updating data********************************/
+        if (!empty($newUsername)){
+            $usernamecheck = self::query('SELECT * FROM users WHERE Username=?', array($newUsername));
+            if(isset($usernamecheck[0])){
+                return ('
+                        <div style="padding-top:30px; color: red; padding-left: 40px; font-size: 13px"> 
+                        <p>* Username Taken! *</p>
+                        </div>
+                        ');
+            }else{
+                self::query('UPDATE users SET Username=\'' . $newUsername . '\' WHERE Username=\'' . $username . '\'');
+                $_SESSION['user'] = $newUsername;
+            }
+        }
         if (!empty($firstname)){
             self::query('UPDATE users SET FirstName=\'' . $firstname . '\' WHERE Username=\'' . $username . '\'');
         }
@@ -88,8 +101,8 @@ class Profile extends Controller{
                             </div>
                         </div>
                         <form method="POST" class="profileForm col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div style="padding-bottom: 10px; font-size: 30px; padding-left: 10px">
-                                <p>' . $user_data['Username'] . '</p>
+                            <div class="formInput">
+                                <input type="text" placeholder="' . $user_data['Username'] . '" name="newUsername">
                             </div>
                             <div class="formInput">
                                 <input type="text" placeholder="' . $user_data['FirstName'] . '" name="firstname">
@@ -116,7 +129,7 @@ class Profile extends Controller{
                                 
                                 if ($_POST['Update'] == 'OK') {//---------------------------------------Update button pressed?
                                     self::sanitizeInput();//--------------------------------------------if so sanitise and update the info.
-                                    $error = self::profileUpdate($_SESSION['user'], $_POST['firstname'], $_POST['lastname'], $_POST['email'] ,$_POST['newpassword'], $_POST['currentpassword'], $_POST['checked']);
+                                    $error = self::profileUpdate($_SESSION['user'],$_POST['newUsername'], $_POST['firstname'], $_POST['lastname'], $_POST['email'] ,$_POST['newpassword'], $_POST['currentpassword'], $_POST['checked']);
                                     if (!$error){//-----------------------------------------------------all went well so lets refresh the page with new info
                                         header("Refresh: 0");
                                     }else{//------------------------------------------------------------things went bad lets display an error
