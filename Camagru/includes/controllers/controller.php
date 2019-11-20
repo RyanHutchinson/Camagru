@@ -39,12 +39,16 @@ class Controller extends Database{
 
     //---------------------input sanitization-----------------------------------
 
-    public static function sanitizeInput(){
+    public static function sanitizeInput($mode){
 
-        foreach($_POST as $key => $value){
-            if($key == 'username' || $key == 'firstname' || $key == 'lastname' || $key == 'Caption' ){
-                $_POST[$key] = htmlEntities($_POST[$key], ENT_QUOTES);
+        if($mode == 'cleanPost'){
+            foreach($_POST as $key => $value){
+                if($key == 'username' || $key == 'firstname' || $key == 'lastname' || $key == 'Caption' || $key == 'newUsername'){
+                    $_POST[$key] = htmlEntities($_POST[$key], ENT_QUOTES);
+                }
             }
+        }else{
+            return(htmlEntities($mode, ENT_QUOTES));
         }
     }
 

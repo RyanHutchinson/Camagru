@@ -128,7 +128,7 @@ class Profile extends Controller{
                                 ';
                                 
                                 if ($_POST['Update'] == 'OK') {//---------------------------------------Update button pressed?
-                                    self::sanitizeInput();//--------------------------------------------if so sanitise and update the info.
+                                    self::sanitizeInput('cleanPost');//--------------------------------------------if so sanitise and update the info.
                                     $error = self::profileUpdate($_SESSION['user'],$_POST['newUsername'], $_POST['firstname'], $_POST['lastname'], $_POST['email'] ,$_POST['newpassword'], $_POST['currentpassword'], $_POST['checked']);
                                     if (!$error){//-----------------------------------------------------all went well so lets refresh the page with new info
                                         header("Refresh: 0");

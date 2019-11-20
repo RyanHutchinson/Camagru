@@ -113,7 +113,7 @@ class Register extends Controller{
 			</div>
 			';
 			if ($_POST['register'] == 'OK') {//---------------------------------Button pressed?
-				self::sanitizeInput();
+				self::sanitizeInput('cleanpost');
 				$error =  self::camaRegister($_POST['username'], $_POST['firstname'], $_POST['lastname'], $_POST['email'] ,$_POST['password'], $_POST['passwordValidator']);
 
 				if (!$error){//-------------------------------------------------is all good?

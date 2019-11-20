@@ -21,11 +21,6 @@ listElm.addEventListener('scroll', function() {
 });
 // Initially load some items.
 loadMore();
-//button redirect.
-function postRedirect(postID){
-    window.location = window.location.href + 'Post?postid=' + postID;
-}
-
 
 function makethedeletefornowremovemelater(postID)
 {

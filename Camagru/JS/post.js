@@ -1,5 +1,6 @@
-function addLike(postID, user){
-    if(user != undefined){
+function addLike(postID, username){
+
+    if(username != ''){
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/camagru/Camagru/addLike', true);
         xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
@@ -12,6 +13,6 @@ function addLike(postID, user){
         }
         xhr.send('postID=' + postID);
     }else{
-        alert('Please log in to like!');
+        alert('You need to be logged in to like!');
     }
 }

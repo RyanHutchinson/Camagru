@@ -8,7 +8,7 @@ class NewPost extends Controller{
         <script>alert('Your post has been submitted.\nPress OK to submit another!');</script>
         <?php
 
-        self::sanitizeInput();
+        self::sanitizeInput('cleanPost');
 
         $img = $_POST['hidden'];
         $img = str_replace('data:image/png;base64,', '', $img);

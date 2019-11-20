@@ -24,7 +24,6 @@ class Post extends Controller{
         if(isset($userdata[0]['Notifications'])){
             self::emailNotify($userdata[0]['Email']);
         }
-        header('refresh:0');
     }
 
     public static function getPost($postID){
@@ -39,7 +38,7 @@ class Post extends Controller{
                     <img src="<?php echo $post['Imagesrc'];?>" alt="a photo" style="margin-bottom: 10px">
                 </div>
                 <div style="text-align: center">
-                    <button id="likeButton" onclick="addLike(<?php echo $post['ID'];?>,<?php echo $_SESSION['user'];?>)">Likes <?php echo $post['Likes'];?></button>
+                    <button id="likeButton" onclick="addLike(<?php echo $post['ID'];?>,<?php echo '\'' . $_SESSION['user'] . '\'';?>)">Likes <?php echo $post['Likes'];?></button>
                     <p style="margin-left: 15px"><b><?php echo $post['Caption'];?></b></p>
                 </div>
                 <div>
@@ -63,7 +62,13 @@ class Post extends Controller{
                                 <form method="post">
                                     <textarea name="Caption" rows="2" cols="45" maxlength="250" placeholder="Comment of 100 characters..."></textarea>
                                     <button type="submit" name="newComment" id="post" value="OK">Post</button>
-                                    <?php if(isset($_POST['newComment'])){self::saveComment($_POST['Caption'], $postID);}?>
+                                    <?php
+                                        if(isset($_POST['newComment'])){
+                                            self::sanitizeInput('cleanPost');
+                                            self::saveComment($_POST['Caption'], $postID);
+                                            header('Location:' . POST_PATH . '?postid=' . $postID);
+                                        }
+                                    ?>
                                 </form>
                             </div>
                             <?php
