@@ -311,3 +311,10 @@ text-decoration: underline !important;
 /* Post page*/
 /**************************************************/
 
+
+.sticker{
+    cursor: pointer;
+}
+.sticker:hover{
+    box-shadow:         1px 1px 1px 1px rgba(124, 124, 124, 0.67);
+}

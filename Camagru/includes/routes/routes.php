@@ -16,6 +16,7 @@ define('BOOTSTRAP_PATH', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bo
 define('HOME_JAVASCRIPT_PATH', Route::getDestination('JS/home.js'));
 define('POST_JAVASCRIPT_PATH', Route::getDestination('JS/post.js'));
 define('PROFILE_JAVASCRIPT_PATH', Route::getDestination('JS/profile.js'));
+define('NEWPOST_JAVASCRIPT_PATH', Route::getDestination('JS/newPost.js'));
 
 Route::set('', function(){
     Home::CreateView('Home');
