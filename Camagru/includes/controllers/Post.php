@@ -43,7 +43,7 @@ class Post extends Controller{
                 </div>
                 <div>
                     <?php
-                        for($i = 0; $i < 500; $i++){
+                        for($i = 0; $i < count($comments); $i++){
                             if($comments[$i]['Comment']){
                             ?>
                             <div>

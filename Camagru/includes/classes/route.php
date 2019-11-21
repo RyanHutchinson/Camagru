@@ -8,9 +8,9 @@ class Route{
 
     public static $valid_routes  = array();//-----------------------------------array to set valid routes into
 
-    public static function set($route, $function){//----------------------------set routes as per includes/routes/routes.php which callsthis function
+    public static function set($route, $function){//----------------------------set routes as per includes/routes/routes.php which calls this function
         self::$valid_routes[] = $route;
-
+        
         if($_GET['url'] == $route){//-------------------------------------------if the current url is in the array
             $function->__invoke();//--------------------------------------------invoke the createview function call set in the above routes.php
         }

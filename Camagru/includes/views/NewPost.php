@@ -32,6 +32,7 @@
 					<form id="post" name="post" method="post">
 						<div class="canvas" id="canvasDiv" style="margin-bottom: 15px; display:none">
 							<canvas id="canvas" name="canvas" width="340" height="260"></canvas>
+							<canvas id="canvas-hidden" name="canvas-hidden" width="340" height="260" style="display: none"></canvas>
 							<input id="hidden" name ="hidden" type="hidden">
 						</div>
 						<div id="snapPrompt">
