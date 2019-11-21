@@ -53,7 +53,7 @@ class NewPost extends Controller{
             $user_data = self::query('SELECT * FROM `users` WHERE Username=?', array($_SESSION['user']));                
             try {
                 self::query('INSERT INTO images (Userid, Imagesrc) VALUES(?,?);', array($user_data[0]['ID'], $file));
-                self::query('INSERT INTO posts (Userid, Caption, Imagesrc) VALUES(?, ?, ?)', array($user_data[0]['ID'], $_POST['Caption'], $file));
+                self::query('INSERT INTO posts (Userid, Caption, Imagesrc) VALUES(?, ?, ?)', array($user_data[0]['ID'], $_POST['Caption'], $file)); //TODO:-------Caption not inserting
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
